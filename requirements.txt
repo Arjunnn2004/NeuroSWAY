@@ -1,0 +1,10 @@
+# NeuroSWAY - Fall Detection System for Parkinson's Patients
+# Core dependencies for pose estimation and fall detection
+
+opencv-python>=4.5.0
+mediapipe>=0.10.0
+numpy>=1.21.0,<2.0
+
+# Optional: For audio alerts (uncomment if needed)
+# playsound==1.2.2
+# pygame>=2.1.0

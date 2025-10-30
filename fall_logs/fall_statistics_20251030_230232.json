@@ -1,0 +1,7 @@
+{
+  "total_falls": 0,
+  "fall_events": [],
+  "current_fps": 0,
+  "fall_detected": false,
+  "fall_warning": true
+}

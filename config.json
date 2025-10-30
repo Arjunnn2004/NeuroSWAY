@@ -1,0 +1,26 @@
+{
+    "detection_confidence": 0.5,
+    "tracking_confidence": 0.5,
+    "model_complexity": 1,
+    "camera_width": 1280,
+    "camera_height": 720,
+    "camera_fps": 30,
+    "save_poses": true,
+    "pose_history_length": 100,
+    "gesture_detection": true,
+    "angle_analysis": true,
+    "visualization": {
+        "draw_landmarks": true,
+        "draw_connections": true,
+        "draw_custom_skeleton": true,
+        "show_angles": true,
+        "show_gestures": true
+    },
+    "colors": {
+        "head": [0, 255, 255],
+        "torso": [0, 255, 0],
+        "arms": [255, 0, 0],
+        "legs": [0, 0, 255],
+        "landmarks": [255, 255, 255]
+    }
+}

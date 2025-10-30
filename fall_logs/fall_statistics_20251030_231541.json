@@ -1,0 +1,99 @@
+{
+  "total_falls": 6,
+  "fall_events": [
+    {
+      "timestamp": "2025-10-30T23:12:57.133950",
+      "fall_number": 1,
+      "metrics": {
+        "hip_height": 1.5995030999183655,
+        "torso_angle": 0.6501124846287424,
+        "aspect_ratio": 0.8835359928409883,
+        "shoulder_hip_distance": 0.8231785297393799
+      },
+      "reasons": [
+        "Ground contact: Hip at 1.60"
+      ]
+    },
+    {
+      "timestamp": "2025-10-30T23:13:14.287031",
+      "fall_number": 2,
+      "metrics": {
+        "hip_height": 2.0308743715286255,
+        "torso_angle": 1.3733182000360415,
+        "head_velocity": 0.17170190811157227,
+        "hip_velocity": 0.07433652877807617,
+        "aspect_ratio": 0.935764721082159,
+        "shoulder_hip_distance": 0.9880787134170532
+      },
+      "reasons": [
+        "Ground contact: Hip at 2.03"
+      ]
+    },
+    {
+      "timestamp": "2025-10-30T23:14:19.189649",
+      "fall_number": 3,
+      "metrics": {
+        "hip_height": 1.6545004844665527,
+        "torso_angle": 3.7507927863580908,
+        "head_velocity": 0.07470434904098511,
+        "hip_velocity": 0.009708106517791748,
+        "aspect_ratio": 0.2617932550484918,
+        "shoulder_hip_distance": 0.9476838409900665
+      },
+      "reasons": [
+        "Ground contact: Hip at 1.65"
+      ]
+    },
+    {
+      "timestamp": "2025-10-30T23:14:28.279520",
+      "fall_number": 4,
+      "metrics": {
+        "hip_height": 1.8169841170310974,
+        "torso_angle": 13.96871948568338,
+        "head_velocity": 0.07699143886566162,
+        "hip_velocity": 0.8364784717559814,
+        "aspect_ratio": 0.5876121601123142,
+        "shoulder_hip_distance": 0.9998428821563721
+      },
+      "reasons": [
+        "Ground contact: Hip at 1.82",
+        "Critical velocity: head=0.077, hip=0.836"
+      ]
+    },
+    {
+      "timestamp": "2025-10-30T23:14:45.573996",
+      "fall_number": 5,
+      "metrics": {
+        "hip_height": 1.0271504819393158,
+        "torso_angle": 8.493899084209012,
+        "head_velocity": 0.0793493390083313,
+        "hip_velocity": 0.3187732398509979,
+        "aspect_ratio": 0.7256193092815543,
+        "shoulder_hip_distance": 0.6724156737327576
+      },
+      "reasons": [
+        "Ground contact: Hip at 1.03",
+        "Critical velocity: head=0.079, hip=0.319"
+      ]
+    },
+    {
+      "timestamp": "2025-10-30T23:14:51.065350",
+      "fall_number": 6,
+      "metrics": {
+        "hip_height": 0.6069304049015045,
+        "torso_angle": 1.0303130753899419,
+        "head_velocity": 0.17179372813552618,
+        "hip_velocity": 0.5863699018955231,
+        "aspect_ratio": 0.4533350655560252,
+        "shoulder_hip_distance": 0.31990407407283783
+      },
+      "reasons": [
+        "Critical hip height: 0.61",
+        "Critical velocity: head=0.172, hip=0.586"
+      ]
+    }
+  ],
+  "current_fps": 20.236880754837877,
+  "fall_detected": true,
+  "fall_warning": true
+}

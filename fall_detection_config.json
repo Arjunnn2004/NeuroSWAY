@@ -1,0 +1,86 @@
+{
+    "description": "Fall Detection System Configuration for Parkinson's Patients",
+    "detection_confidence": 0.5,
+    "tracking_confidence": 0.5,
+    "model_complexity": 1,
+    
+    "camera_settings": {
+        "width": 1280,
+        "height": 720,
+        "fps": 30,
+        "camera_index": 0
+    },
+    
+    "fall_detection_thresholds": {
+        "hip_height_threshold": 0.70,
+        "hip_height_critical": 0.80,
+        "torso_angle_threshold": 60,
+        "torso_angle_critical": 75,
+        "head_velocity_threshold": 0.20,
+        "head_velocity_critical": 0.35,
+        "hip_velocity_threshold": 0.15,
+        "hip_velocity_critical": 0.25,
+        "aspect_ratio_threshold": 1.8,
+        "vertical_speed_threshold": 0.12,
+        "shoulder_hip_ratio_threshold": 0.25,
+        "ground_contact_threshold": 0.90
+    },
+    
+    "fall_detection_settings": {
+        "consecutive_frames_for_fall": 3,
+        "consecutive_frames_for_recovery": 15,
+        "history_window_size": 45,
+        "cooldown_frames": 90,
+        "enable_velocity_check": true,
+        "enable_angle_check": true,
+        "enable_aspect_ratio_check": true,
+        "enable_ground_contact_check": true
+    },
+    
+    "alert_settings": {
+        "enable_visual_alert": true,
+        "enable_audio_alert": true,
+        "enable_log_file": true,
+        "alert_duration_seconds": 5,
+        "auto_save_fall_frames": true,
+        "fall_video_buffer_seconds": 3
+    },
+    
+    "visualization": {
+        "draw_landmarks": true,
+        "draw_skeleton": true,
+        "show_angles": true,
+        "show_velocities": true,
+        "show_thresholds": true,
+        "show_status_panel": true,
+        "show_fall_history": true
+    },
+    
+    "colors": {
+        "normal": [0, 255, 0],
+        "warning": [0, 165, 255],
+        "critical": [0, 0, 255],
+        "fall_detected": [0, 0, 255],
+        "landmarks": [255, 255, 255],
+        "skeleton": [0, 255, 255]
+    },
+    
+    "output_settings": {
+        "save_logs": true,
+        "log_directory": "fall_logs",
+        "save_fall_frames": true,
+        "fall_frames_directory": "fall_detections",
+        "save_statistics": true
+    },
+    
+    "threshold_descriptions": {
+        "hip_height_threshold": "Normalized hip center Y position (0=top, 1=bottom). Fall suspected when > threshold",
+        "torso_angle_threshold": "Angle of torso from vertical in degrees. Fall suspected when > threshold",
+        "head_velocity_threshold": "Vertical velocity of head movement (normalized). Fall suspected when > threshold",
+        "hip_velocity_threshold": "Vertical velocity of hip movement (normalized). Fall suspected when > threshold",
+        "aspect_ratio_threshold": "Width/Height ratio of body bounding box. Fall suspected when > threshold",
+        "vertical_speed_threshold": "Overall vertical movement speed. Fall suspected when > threshold",
+        "shoulder_hip_ratio_threshold": "Vertical distance between shoulders and hips (normalized). Fall suspected when < threshold",
+        "ground_contact_threshold": "Hip position indicating ground contact. Fall confirmed when > threshold"
+    }
+}
