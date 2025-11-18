@@ -1,0 +1,182 @@
+{
+  "falls": [
+    {
+      "timestamp": "2025-11-18T19:23:50.169174",
+      "fall_number": 1,
+      "metrics": {
+        "hip_height": 1.4629098773002625,
+        "torso_angle": 2.9146896667451494,
+        "aspect_ratio": 0.4842418727727968,
+        "shoulder_hip_distance": 0.47769248485565186
+      },
+      "reasons": [
+        "Ground contact: Hip at 1.46"
+      ],
+      "impact_point": null,
+      "impact_energy": 0.0,
+      "weight_kg": 70.0
+    },
+    {
+      "timestamp": "2025-11-18T19:24:04.181827",
+      "fall_number": 2,
+      "metrics": {
+        "hip_height": 0.812164694070816,
+        "torso_angle": 44.71859253329606,
+        "head_velocity": 0.6357636861503124,
+        "hip_velocity": 0.24117586016654968,
+        "shoulder_velocity": 0.4959392808377743,
+        "knee_velocity": 0.1387551724910736,
+        "ankle_velocity": 0.21941211819648743,
+        "aspect_ratio": 1.4369590271784716,
+        "shoulder_hip_distance": 0.17253488302230835,
+        "impact_velocity": 0.6357636861503124
+      },
+      "reasons": [
+        "Critical hip height: 0.81",
+        "Critical velocity: head=0.636, hip=0.241",
+        "Compressed torso: 0.17"
+      ],
+      "impact_point": "head",
+      "impact_energy": 14.146841261960153,
+      "weight_kg": 70.0
+    },
+    {
+      "timestamp": "2025-11-18T19:30:41.699597",
+      "fall_number": 1,
+      "metrics": {
+        "hip_height": 1.4482738971710205,
+        "torso_angle": 3.1721702082681755,
+        "aspect_ratio": 0.7955795726132083,
+        "shoulder_hip_distance": 0.6393968462944031
+      },
+      "reasons": [
+        "Ground contact: Hip at 1.45"
+      ],
+      "impact_point": null,
+      "impact_energy": 0.0,
+      "weight_kg": 70.0
+    },
+    {
+      "timestamp": "2025-11-18T19:30:59.997429",
+      "fall_number": 2,
+      "metrics": {
+        "hip_height": 0.7991532981395721,
+        "torso_angle": 20.019916197077837,
+        "head_velocity": 0.5361047945916653,
+        "hip_velocity": 0.42207835614681244,
+        "shoulder_velocity": 0.4776389095932245,
+        "knee_velocity": 0.27232491970062256,
+        "ankle_velocity": 0.05148988962173462,
+        "aspect_ratio": 0.7753459082739997,
+        "shoulder_hip_distance": 0.23911361396312714,
+        "impact_velocity": 0.42207835614681244
+      },
+      "reasons": [
+        "Low hip height: 0.80",
+        "Critical velocity: head=0.536, hip=0.422",
+        "Compressed torso: 0.24"
+      ],
+      "impact_point": "hip",
+      "impact_energy": 6.235254855465841,
+      "weight_kg": 70.0
+    },
+    {
+      "timestamp": "2025-11-18T19:31:54.065541",
+      "fall_number": 1,
+      "metrics": {
+        "hip_height": 0.9351921677589417,
+        "torso_angle": 6.120962141132069,
+        "head_velocity": 0.026892930269241333,
+        "hip_velocity": 0.12867891788482666,
+        "shoulder_velocity": 0.04610742628574371,
+        "knee_velocity": 0.20450490713119507,
+        "ankle_velocity": 0.33236396312713623,
+        "aspect_ratio": 0.38413952923926303,
+        "shoulder_hip_distance": 0.49016422033309937,
+        "impact_velocity": 0.33236396312713623
+      },
+      "reasons": [
+        "Ground contact: Hip at 0.94"
+      ],
+      "impact_point": "ankle",
+      "impact_energy": 3.866303139495173,
+      "weight_kg": 70.0
+    },
+    {
+      "timestamp": "2025-11-18T19:32:51.943473",
+      "fall_number": 2,
+      "metrics": {
+        "hip_height": 0.8990029990673065,
+        "torso_angle": 3.668582081627914,
+        "head_velocity": 0.8850364834070206,
+        "hip_velocity": 0.26741182804107666,
+        "shoulder_velocity": 0.5500848144292831,
+        "knee_velocity": 0.05608174204826355,
+        "ankle_velocity": 0.19995999336242676,
+        "aspect_ratio": 1.3569170384671243,
+        "shoulder_hip_distance": 0.14273816347122192,
+        "impact_velocity": 0.8850364834070206
+      },
+      "reasons": [
+        "Critical hip height: 0.90",
+        "Critical velocity: head=0.885, hip=0.267",
+        "Compressed torso: 0.14"
+      ],
+      "impact_point": "head",
+      "impact_energy": 27.415135193651288,
+      "weight_kg": 70.0
+    },
+    {
+      "timestamp": "2025-11-18T19:46:42.196843",
+      "fall_number": 1,
+      "metrics": {
+        "hip_height": 1.3527189493179321,
+        "torso_angle": 0.5462325804741385,
+        "aspect_ratio": 0.5863232651172661,
+        "shoulder_hip_distance": 0.5729897022247314
+      },
+      "reasons": [
+        "Ground contact: Hip at 1.35"
+      ],
+      "impact_point": null,
+      "impact_energy": 0.0,
+      "fall_type": "backward",
+      "injury_info": {
+        "injury_risk": "low",
+        "expected_injury": "No significant injury detected",
+        "recommendation": "Monitor for dizziness, pain, or imbalance."
+      },
+      "weight_kg": 54.0
+    },
+    {
+      "timestamp": "2025-11-18T19:47:01.362651",
+      "fall_number": 2,
+      "metrics": {
+        "hip_height": 1.000576674938202,
+        "torso_angle": 11.58039512081586,
+        "head_velocity": 0.779340460896492,
+        "hip_velocity": 0.3009323477745056,
+        "shoulder_velocity": 0.5166173577308655,
+        "knee_velocity": 0.14306163787841797,
+        "ankle_velocity": 0.17809998989105225,
+        "aspect_ratio": 1.2676257678722325,
+        "shoulder_hip_distance": 0.1347653865814209,
+        "impact_velocity": 0.779340460896492
+      },
+      "reasons": [
+        "Ground contact: Hip at 1.00",
+        "Critical velocity: head=0.779, hip=0.301",
+        "Compressed torso: 0.13"
+      ],
+      "impact_point": "head",
+      "impact_energy": 16.399031957739627,
+      "fall_type": "sideways-left",
+      "injury_info": {
+        "injury_risk": "high",
+        "expected_injury": "High risk head trauma",
+        "recommendation": "Call emergency services immediately."
+      },
+      "weight_kg": 54.0
+    }
+  ]
+}

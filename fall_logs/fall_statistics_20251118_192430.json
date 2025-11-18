@@ -1,0 +1,49 @@
+{
+  "total_falls": 2,
+  "fall_events": [
+    {
+      "timestamp": "2025-11-18T19:23:50.169174",
+      "fall_number": 1,
+      "metrics": {
+        "hip_height": 1.4629098773002625,
+        "torso_angle": 2.9146896667451494,
+        "aspect_ratio": 0.4842418727727968,
+        "shoulder_hip_distance": 0.47769248485565186
+      },
+      "reasons": [
+        "Ground contact: Hip at 1.46"
+      ],
+      "impact_point": null,
+      "impact_energy": 0.0,
+      "weight_kg": 70.0
+    },
+    {
+      "timestamp": "2025-11-18T19:24:04.181827",
+      "fall_number": 2,
+      "metrics": {
+        "hip_height": 0.812164694070816,
+        "torso_angle": 44.71859253329606,
+        "head_velocity": 0.6357636861503124,
+        "hip_velocity": 0.24117586016654968,
+        "shoulder_velocity": 0.4959392808377743,
+        "knee_velocity": 0.1387551724910736,
+        "ankle_velocity": 0.21941211819648743,
+        "aspect_ratio": 1.4369590271784716,
+        "shoulder_hip_distance": 0.17253488302230835,
+        "impact_velocity": 0.6357636861503124
+      },
+      "reasons": [
+        "Critical hip height: 0.81",
+        "Critical velocity: head=0.636, hip=0.241",
+        "Compressed torso: 0.17"
+      ],
+      "impact_point": "head",
+      "impact_energy": 14.146841261960153,
+      "weight_kg": 70.0
+    }
+  ],
+  "current_fps": 15.005799389078545,
+  "fall_detected": true,
+  "fall_warning": true,
+  "weight_kg": 70.0
+}

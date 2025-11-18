@@ -1,0 +1,61 @@
+{
+  "total_falls": 2,
+  "fall_events": [
+    {
+      "timestamp": "2025-11-18T19:46:42.196843",
+      "fall_number": 1,
+      "metrics": {
+        "hip_height": 1.3527189493179321,
+        "torso_angle": 0.5462325804741385,
+        "aspect_ratio": 0.5863232651172661,
+        "shoulder_hip_distance": 0.5729897022247314
+      },
+      "reasons": [
+        "Ground contact: Hip at 1.35"
+      ],
+      "impact_point": null,
+      "impact_energy": 0.0,
+      "fall_type": "backward",
+      "injury_info": {
+        "injury_risk": "low",
+        "expected_injury": "No significant injury detected",
+        "recommendation": "Monitor for dizziness, pain, or imbalance."
+      },
+      "weight_kg": 54.0
+    },
+    {
+      "timestamp": "2025-11-18T19:47:01.362651",
+      "fall_number": 2,
+      "metrics": {
+        "hip_height": 1.000576674938202,
+        "torso_angle": 11.58039512081586,
+        "head_velocity": 0.779340460896492,
+        "hip_velocity": 0.3009323477745056,
+        "shoulder_velocity": 0.5166173577308655,
+        "knee_velocity": 0.14306163787841797,
+        "ankle_velocity": 0.17809998989105225,
+        "aspect_ratio": 1.2676257678722325,
+        "shoulder_hip_distance": 0.1347653865814209,
+        "impact_velocity": 0.779340460896492
+      },
+      "reasons": [
+        "Ground contact: Hip at 1.00",
+        "Critical velocity: head=0.779, hip=0.301",
+        "Compressed torso: 0.13"
+      ],
+      "impact_point": "head",
+      "impact_energy": 16.399031957739627,
+      "fall_type": "sideways-left",
+      "injury_info": {
+        "injury_risk": "high",
+        "expected_injury": "High risk head trauma",
+        "recommendation": "Call emergency services immediately."
+      },
+      "weight_kg": 54.0
+    }
+  ],
+  "current_fps": 14.990673503278064,
+  "fall_detected": true,
+  "fall_warning": true,
+  "weight_kg": 54.0
+}

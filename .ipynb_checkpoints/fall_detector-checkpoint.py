@@ -198,123 +198,6 @@ class FallDetector:
 
         return angle_deg
 
-    # ------------------------------------------------------------------
-    # NEW: FALL TYPE CLASSIFICATION
-    # ------------------------------------------------------------------
-    def classify_fall_type(self, landmarks):
-        """
-        Classify fall direction based on shoulder and hip movement.
-        Returns: "forward", "backward", "sideways-left", "sideways-right",
-                 "collapse", or "unknown"
-        """
-
-        nose = landmarks[self.mp_pose.PoseLandmark.NOSE.value]
-        left_shoulder = landmarks[self.mp_pose.PoseLandmark.LEFT_SHOULDER.value]
-        right_shoulder = landmarks[self.mp_pose.PoseLandmark.RIGHT_SHOULDER.value]
-        left_hip = landmarks[self.mp_pose.PoseLandmark.LEFT_HIP.value]
-        right_hip = landmarks[self.mp_pose.PoseLandmark.RIGHT_HIP.value]
-
-        # Horizontal (side-to-side) differences
-        shoulder_dx = left_shoulder.x - right_shoulder.x
-        hip_dx = left_hip.x - right_hip.x
-
-        # Vertical positions
-        head_y = nose.y
-        shoulder_y = (left_shoulder.y + right_shoulder.y) / 2
-        hip_y = (left_hip.y + right_hip.y) / 2
-
-        # Collapse fall: body suddenly shrinks vertically
-        if abs(shoulder_y - hip_y) < 0.12:
-            return "collapse"
-
-        # Forward fall: head moves much lower than shoulders
-        if head_y > shoulder_y + 0.15:
-            return "forward"
-
-        # Backward fall: shoulders go down while head stays relatively high
-        if shoulder_y > head_y + 0.10:
-            return "backward"
-
-        # Sideways fall left
-        if shoulder_dx > 0.10 or hip_dx > 0.12:
-            return "sideways-left"
-
-        # Sideways fall right
-        if shoulder_dx < -0.10 or hip_dx < -0.12:
-            return "sideways-right"
-
-        return "unknown"
-
-    # ------------------------------------------------------------------
-    # NEW: INJURY PREDICTION
-    # ------------------------------------------------------------------
-    def predict_injury(self, impact_point, impact_energy):
-        """
-        Predict injury type & severity based on impact point and fall energy.
-        Returns: dict with injury_risk, expected_injury, recommendation
-        """
-
-        if impact_point is None:
-            return {
-                "injury_risk": "low",
-                "expected_injury": "No significant injury detected",
-                "recommendation": "Monitor for dizziness, pain, or imbalance."
-            }
-
-        # Simple thresholds for severity (tunable)
-        if impact_energy < 0.5:
-            severity = "low"
-        elif impact_energy < 2.0:
-            severity = "medium"
-        else:
-            severity = "high"
-
-        injury_map = {
-            "head": {
-                "low": ("Minor head impact", "Apply ice, rest, and monitor headache."),
-                "medium": ("Possible mild concussion", "Avoid screens, seek medical check-up."),
-                "high": ("High risk head trauma", "Call emergency services immediately.")
-            },
-            "shoulder": {
-                "low": ("Mild shoulder impact", "Rest shoulder for 24 hours."),
-                "medium": ("Possible sprain", "Limit movement, consider X-ray."),
-                "high": ("Possible dislocation/fracture", "Visit emergency department.")
-            },
-            "hip": {
-                "low": ("Minor hip impact", "Monitor for pain or bruising."),
-                "medium": ("Possible hip contusion", "Avoid long walks, consult doctor."),
-                "high": ("High fracture risk", "Do not walk, call ambulance.")
-            },
-            "knee": {
-                "low": ("Light knee impact", "Ice & rest for a day."),
-                "medium": ("Possible ligament strain", "Avoid bending, consider support."),
-                "high": ("Major knee impact", "May need X-ray, visit hospital.")
-            },
-            "ankle": {
-                "low": ("Minor ankle impact", "Rest & elevate leg."),
-                "medium": ("Possible ankle sprain", "Avoid weight-bearing, consider brace."),
-                "high": ("Severe ankle injury", "High swelling/fracture risk, seek care.")
-            }
-        }
-
-        if impact_point not in injury_map:
-            return {
-                "injury_risk": severity,
-                "expected_injury": "Unknown body part impact",
-                "recommendation": "Observe symptoms, rest, and contact doctor if pain increases."
-            }
-
-        expected_injury, recommendation = injury_map[impact_point][severity]
-
-        return {
-            "injury_risk": severity,
-            "expected_injury": expected_injury,
-            "recommendation": recommendation
-        }
-
-    # ------------------------------------------------------------------
-    # MAIN FALL DETECTION
-    # ------------------------------------------------------------------
     def detect_fall(self, landmarks, image_shape: Tuple[int, int]) -> Dict:
         """
         Detect fall using multiple threshold-based criteria
@@ -334,12 +217,6 @@ class FallDetector:
                 "reasons": ["No landmarks detected"],
                 "impact_point": None,
                 "impact_energy": 0.0,
-                "fall_type": "unknown",
-                "injury_info": {
-                    "injury_risk": "low",
-                    "expected_injury": "No significant injury detected",
-                    "recommendation": "Monitor for dizziness or pain."
-                },
             }
 
         height, width = image_shape[:2]
@@ -371,8 +248,6 @@ class FallDetector:
             "reasons": [],
             "impact_point": None,
             "impact_energy": 0.0,
-            "fall_type": "unknown",
-            "injury_info": {},
         }
 
         # 1. Hip height check (primary indicator)
@@ -525,17 +400,6 @@ class FallDetector:
                 results["impact_energy"] = impact_energy
                 results["metrics"]["impact_velocity"] = best_velocity
 
-        # Fall type classification
-        fall_type = self.classify_fall_type(landmarks)
-        results["fall_type"] = fall_type
-
-        # Injury prediction
-        injury_info = self.predict_injury(
-            results.get("impact_point"),
-            results.get("impact_energy", 0.0)
-        )
-        results["injury_info"] = injury_info
-
         # Store position history (for next frame velocities)
         self.position_history.append(
             {
@@ -609,12 +473,10 @@ class FallDetector:
         event = {
             "timestamp": datetime.now().isoformat(),
             "fall_number": self.fall_count,
-            "metrics": fall_result.get("metrics", {}),
-            "reasons": fall_result.get("reasons", []),
+            "metrics": fall_result["metrics"],
+            "reasons": fall_result["reasons"],
             "impact_point": fall_result.get("impact_point"),
             "impact_energy": fall_result.get("impact_energy"),
-            "fall_type": fall_result.get("fall_type", "unknown"),
-            "injury_info": fall_result.get("injury_info", {}),
             "weight_kg": float(getattr(self, "weight_kg", 70.0)),
         }
         self.fall_events.append(event)
@@ -640,14 +502,6 @@ class FallDetector:
                     json.dump(log_data, f, indent=2)
 
                 print(f"📝 Fall event logged to {log_path}")
-                if event["fall_type"] != "unknown":
-                    print(f"   Type: {event['fall_type']}")
-                if event["impact_point"]:
-                    print(f"   Impact: {event['impact_point']} (energy={event['impact_energy']:.3f})")
-                if event["injury_info"]:
-                    print(f"   Injury risk: {event['injury_info'].get('injury_risk')}")
-                    print(f"   Expected: {event['injury_info'].get('expected_injury')}")
-                    print(f"   Advice: {event['injury_info'].get('recommendation')}")
             except Exception as e:
                 print(f"⚠️  Error logging fall event: {e}")
 
@@ -712,14 +566,14 @@ class FallDetector:
         cv2.rectangle(
             image,
             (panel_x - 5, panel_y - 5),
-            (380, panel_y + line_height * 14),
+            (350, panel_y + line_height * 10),
             (0, 0, 0),
             -1,
         )
         cv2.rectangle(
             image,
             (panel_x - 5, panel_y - 5),
-            (380, panel_y + line_height * 14),
+            (350, panel_y + line_height * 10),
             (255, 255, 255),
             2,
         )
@@ -834,60 +688,11 @@ class FallDetector:
             y += line_height
             cv2.putText(
                 image,
-                f"Impact Energy: {impact_energy:.3f}",
+                f"Impact Energy (rel): {impact_energy:.3f}",
                 (panel_x, y),
                 cv2.FONT_HERSHEY_SIMPLEX,
                 0.5,
                 (255, 255, 255),
-                1,
-            )
-            y += line_height
-
-        # Fall type
-        fall_type = fall_result.get("fall_type", "unknown")
-        cv2.putText(
-            image,
-            f"Fall Type: {fall_type}",
-            (panel_x, y),
-            cv2.FONT_HERSHEY_SIMPLEX,
-            0.5,
-            (0, 255, 255),
-            1,
-        )
-        y += line_height
-
-        # Injury prediction
-        injury = fall_result.get("injury_info", {})
-        if injury:
-            cv2.putText(
-                image,
-                f"Injury Risk: {injury.get('injury_risk', '')}",
-                (panel_x, y),
-                cv2.FONT_HERSHEY_SIMPLEX,
-                0.5,
-                (0, 255, 255),
-                1,
-            )
-            y += line_height
-
-            cv2.putText(
-                image,
-                f"Expected: {injury.get('expected_injury', '')}",
-                (panel_x, y),
-                cv2.FONT_HERSHEY_SIMPLEX,
-                0.5,
-                (255, 255, 255),
-                1,
-            )
-            y += line_height
-
-            cv2.putText(
-                image,
-                f"Advice: {injury.get('recommendation', '')}",
-                (panel_x, y),
-                cv2.FONT_HERSHEY_SIMPLEX,
-                0.5,
-                (200, 200, 200),
                 1,
             )
             y += line_height
@@ -987,8 +792,6 @@ class FallDetector:
             "reasons": [],
             "impact_point": None,
             "impact_energy": 0.0,
-            "fall_type": "unknown",
-            "injury_info": {},
         }
         if results.pose_landmarks:
             fall_result = self.detect_fall(results.pose_landmarks.landmark, frame.shape)

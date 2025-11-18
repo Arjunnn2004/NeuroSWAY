@@ -1,0 +1,90 @@
+{
+  "total_falls": 3,
+  "fall_events": [
+    {
+      "timestamp": "2025-11-19T00:12:56.530858",
+      "fall_number": 1,
+      "metrics": {
+        "hip_height": 1.0054681897163391,
+        "torso_angle": 19.900350488514203,
+        "aspect_ratio": 0.5065153032787703,
+        "shoulder_hip_distance": 0.20438385009765625
+      },
+      "reasons": [
+        "Ground contact: Hip at 1.01",
+        "Compressed torso: 0.20"
+      ],
+      "impact_point": null,
+      "impact_energy": 0.0,
+      "fall_type": "unknown",
+      "injury_info": {
+        "injury_risk": "low",
+        "expected_injury": "No significant injury detected",
+        "recommendation": "Monitor for dizziness, pain, or imbalance."
+      },
+      "weight_kg": 60.0
+    },
+    {
+      "timestamp": "2025-11-19T00:13:16.628742",
+      "fall_number": 2,
+      "metrics": {
+        "hip_height": 0.6486754417419434,
+        "torso_angle": 76.86338729950778,
+        "head_velocity": 0.0015690922737121582,
+        "hip_velocity": 0.023102790117263794,
+        "shoulder_velocity": 0.044391050934791565,
+        "knee_velocity": 0.03085365891456604,
+        "ankle_velocity": 0.00676313042640686,
+        "aspect_ratio": 1.1764786526669897,
+        "shoulder_hip_distance": 0.05221140384674072,
+        "impact_velocity": 0.03085365891456604
+      },
+      "reasons": [
+        "Critical torso angle: 76.9\u00b0",
+        "Compressed torso: 0.05"
+      ],
+      "impact_point": "knee",
+      "impact_energy": 0.028558448052491414,
+      "fall_type": "collapse",
+      "injury_info": {
+        "injury_risk": "low",
+        "expected_injury": "Light knee impact",
+        "recommendation": "Ice & rest for a day."
+      },
+      "weight_kg": 60.0
+    },
+    {
+      "timestamp": "2025-11-19T00:13:27.085104",
+      "fall_number": 3,
+      "metrics": {
+        "hip_height": 1.7298389077186584,
+        "torso_angle": 0.9581591127367365,
+        "head_velocity": 0.5729951448738575,
+        "hip_velocity": 1.1453718841075897,
+        "shoulder_velocity": 0.7308808490633965,
+        "knee_velocity": 1.5477451980113983,
+        "ankle_velocity": 1.8816636204719543,
+        "aspect_ratio": 0.4424054208284209,
+        "shoulder_hip_distance": 0.8732606172561646,
+        "impact_velocity": 1.8816636204719543
+      },
+      "reasons": [
+        "Ground contact: Hip at 1.73",
+        "Critical velocity: head=0.573, hip=1.145"
+      ],
+      "impact_point": "ankle",
+      "impact_energy": 106.2197394182287,
+      "fall_type": "backward",
+      "injury_info": {
+        "injury_risk": "high",
+        "expected_injury": "Severe ankle injury",
+        "recommendation": "High swelling/fracture risk, seek care."
+      },
+      "weight_kg": 60.0
+    }
+  ],
+  "current_fps": 19.483120033767054,
+  "fall_detected": true,
+  "fall_warning": true,
+  "weight_kg": 60.0
+}
